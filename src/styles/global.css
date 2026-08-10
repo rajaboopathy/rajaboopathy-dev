@@ -1,0 +1,171 @@
+/* Global Design System & Variables */
+:root {
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --font-display: 'Outfit', var(--font-sans);
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', Courier, monospace;
+
+  /* Premium HSL Color Palette (Dark Theme First) */
+  --bg-primary: hsl(224, 71%, 4%);
+  --bg-secondary: hsl(224, 60%, 7%);
+  --bg-tertiary: hsl(224, 50%, 11%);
+  
+  --text-primary: hsl(210, 40%, 98%);
+  --text-secondary: hsl(215, 20%, 70%);
+  --text-muted: hsl(215, 16%, 47%);
+  
+  --accent-primary: hsl(263, 90%, 65%); /* Vibrant Violet */
+  --accent-secondary: hsl(217, 91%, 60%); /* Electric Indigo */
+  --accent-glow: hsla(263, 90%, 65%, 0.15);
+  
+  --border-color: hsl(224, 30%, 16%);
+  --border-glow: hsla(263, 90%, 65%, 0.25);
+  
+  --glass-bg: rgba(8, 10, 18, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.05);
+  --glass-shadow: rgba(0, 0, 0, 0.3);
+
+  --bg-gradient: radial-gradient(circle at 50% 0%, hsl(224, 71%, 10%) 0%, var(--bg-primary) 70%);
+
+  /* Modern Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Light Theme Variables */
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-primary: hsl(210, 20%, 98%);
+    --bg-secondary: hsl(210, 20%, 94%);
+    --bg-tertiary: hsl(210, 20%, 89%);
+    
+    --text-primary: hsl(224, 71%, 8%);
+    --text-secondary: hsl(224, 20%, 28%);
+    --text-muted: hsl(224, 10%, 48%);
+    
+    --accent-primary: hsl(263, 75%, 55%);
+    --accent-secondary: hsl(217, 85%, 50%);
+    --accent-glow: hsla(263, 75%, 55%, 0.08);
+    
+    --border-color: hsl(220, 20%, 86%);
+    --border-glow: hsla(263, 75%, 55%, 0.15);
+    
+    --glass-bg: rgba(255, 255, 255, 0.75);
+    --glass-border: rgba(0, 0, 0, 0.08);
+    --glass-shadow: rgba(0, 0, 0, 0.05);
+
+    --bg-gradient: radial-gradient(circle at 50% 0%, hsl(220, 40%, 90%) 0%, var(--bg-primary) 70%);
+  }
+}
+
+/* Reset & Base Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+
+p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  margin-bottom: 1.25rem;
+}
+
+a {
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--text-primary);
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background-color: var(--bg-tertiary);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+}
+
+/* Grid & Layout Utilities */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Custom Premium Animations & Glows */
+.glow-text {
+  text-shadow: 0 0 20px var(--accent-glow);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--text-primary) 30%, var(--accent-primary) 70%, var(--accent-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-border {
+  position: relative;
+  border-radius: 12px;
+  background: var(--bg-secondary);
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  top: -1px; left: -1px; right: -1px; bottom: -1px;
+  border-radius: 13px;
+  background: linear-gradient(135deg, var(--border-color), var(--accent-primary), var(--border-color));
+  z-index: -1;
+  opacity: 0.4;
+  transition: opacity var(--transition-normal);
+}
+
+.gradient-border:hover::before {
+  opacity: 1;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--accent-primary);
+  color: var(--bg-primary);
+}

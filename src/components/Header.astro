@@ -1,0 +1,124 @@
+---
+const navItems = [
+  { href: '/', label: 'Home' },
+  { href: '/blog', label: 'Essays' },
+  { href: '/garden', label: 'Digital Garden' }
+];
+
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.endsWith('/') && pathname.length > 1 ? pathname.slice(0, -1) : pathname;
+---
+
+<header class="header">
+  <div class="container header-container">
+    <a href="/" class="logo">
+      <span class="logo-prefix">Tech</span>
+      <span class="logo-suffix">Synthesis</span>
+    </a>
+    
+    <nav class="nav">
+      <ul class="nav-list">
+        {navItems.map(item => {
+          const isActive = currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href));
+          return (
+            <li>
+              <a href={item.href} class={`nav-link ${isActive ? 'active' : ''}`}>
+                {item.label}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    z-index: 1000;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+    box-shadow: 0 4px 30px var(--glass-shadow);
+    display: flex;
+    align-items: center;
+  }
+
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .logo {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    display: flex;
+    gap: 0.2rem;
+  }
+
+  .logo-prefix {
+    color: var(--text-primary);
+  }
+
+  .logo-suffix {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .nav-list {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-link {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    position: relative;
+    padding: 0.5rem 0;
+    transition: color var(--transition-fast);
+  }
+
+  .nav-link:hover {
+    color: var(--text-primary);
+  }
+
+  .nav-link.active {
+    color: var(--text-primary);
+  }
+
+  .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+    border-radius: 2px;
+  }
+
+  @media (max-width: 640px) {
+    .header {
+      height: 70px;
+    }
+    .nav-list {
+      gap: 1rem;
+    }
+    .logo {
+      font-size: 1.2rem;
+    }
+  }
+</style>

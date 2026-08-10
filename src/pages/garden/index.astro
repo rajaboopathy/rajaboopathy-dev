@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Card from '../../components/Card.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('garden');
+
+// Format date utility
+const formatDate = (date: Date) => {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric'
+  });
+};
+
+// Sort posts by date descending
+const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout title="Digital Garden | Tech Synthesis" description="Reading logs, academic papers, and technical book syntheses.">
+  <div class="garden-header-section">
+    <div class="container text-center">
+      <h1 class="gradient-text page-title">Digital Garden</h1>
+      <p class="subtitle">A public repository of synthesized ideas, reading logs, and detailed notes on books and research papers.</p>
+    </div>
+  </div>
+
+  <div class="container section">
+    <div class="grid">
+      {sortedPosts.map(post => (
+        <Card
+          href={`/garden/${post.id}`}
+          title={post.data.title}
+          description={post.data.description}
+          date={formatDate(post.data.pubDate)}
+          category={post.data.category}
+          tags={post.data.tags}
+        />
+      ))}
+      {sortedPosts.length === 0 && (
+        <p class="no-posts">No garden notes published yet. Check back soon!</p>
+      )}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .garden-header-section {
+    padding: 4rem 0 2rem;
+    position: relative;
+  }
+
+  .text-center {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .page-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  .subtitle {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+  }
+
+  .section {
+    padding: 3rem 0;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+  }
+
+  .no-posts {
+    color: var(--text-muted);
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 4rem;
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+  }
+</style>
