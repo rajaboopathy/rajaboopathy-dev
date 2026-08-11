@@ -27,7 +27,7 @@ const formatDate = (date: Date) => {
   <article class="article-container">
     <header class="article-header">
       <div class="article-meta">
-        <a href="/garden" class="back-link">&larr; Back to garden</a>
+        <a href={`${import.meta.env.BASE_URL}garden`} class="back-link">&larr; Back to garden</a>
         <span class="separator">|</span>
         <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
         {post.data.category && (

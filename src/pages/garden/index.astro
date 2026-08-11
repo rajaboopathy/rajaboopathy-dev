@@ -30,7 +30,7 @@ const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDa
     <div class="grid">
       {sortedPosts.map(post => (
         <Card
-          href={`/garden/${post.id}`}
+          href={`${import.meta.env.BASE_URL}garden/${post.id}`}
           title={post.data.title}
           description={post.data.description}
           date={formatDate(post.data.pubDate)}

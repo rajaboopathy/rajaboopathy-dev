@@ -42,8 +42,8 @@ const latestGarden = gardenPosts
           over volume and trends.
         </p>
         <div class="hero-actions">
-          <a href="/blog" class="btn btn-primary">Read Essays</a>
-          <a href="/garden" class="btn btn-secondary">Explore Garden</a>
+          <a href={`${import.meta.env.BASE_URL}blog`} class="btn btn-primary">Read Essays</a>
+          <a href={`${import.meta.env.BASE_URL}garden`} class="btn btn-secondary">Explore Garden</a>
         </div>
       </div>
       <div class="hero-visual">
@@ -73,13 +73,13 @@ const latestGarden = gardenPosts
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">Latest Essays</h2>
-        <a href="/blog" class="section-link">All essays &rarr;</a>
+        <a href={`${import.meta.env.BASE_URL}blog`} class="section-link">All essays &rarr;</a>
       </div>
       <div class="grid">
         {
           latestBlog.map((post) => (
             <Card
-              href={`/blog/${post.id}`}
+              href={`${import.meta.env.BASE_URL}blog/${post.id}`}
               title={post.data.title}
               description={post.data.description}
               date={formatDate(post.data.pubDate)}
@@ -102,13 +102,13 @@ const latestGarden = gardenPosts
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">Digital Garden</h2>
-        <a href="/garden" class="section-link">All reading logs &rarr;</a>
+        <a href={`${import.meta.env.BASE_URL}garden`} class="section-link">All reading logs &rarr;</a>
       </div>
       <div class="grid">
         {
           latestGarden.map((post) => (
             <Card
-              href={`/garden/${post.id}`}
+              href={`${import.meta.env.BASE_URL}garden/${post.id}`}
               title={post.data.title}
               description={post.data.description}
               date={formatDate(post.data.pubDate)}
