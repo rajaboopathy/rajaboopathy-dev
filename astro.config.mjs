@@ -5,6 +5,6 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
     // Replace 'your-github-username' with your actual GitHub username/org
     site: 'https://rajaboopathy.github.io',
-    base: '/rajaboopathy-dev',
+    base: '/rajaboopathy-dev/',
 });
 
