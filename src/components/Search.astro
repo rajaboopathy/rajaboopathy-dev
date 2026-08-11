@@ -227,7 +227,7 @@
     display: flex;
     align-items: center;
     gap: 0.6rem;
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--glass-bg);
     border: 1px solid var(--glass-border);
     border-radius: 99px;
     padding: 0.5rem 1rem;
@@ -238,8 +238,8 @@
   }
 
   .search-trigger:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.15);
+    background: var(--bg-secondary);
+    border-color: var(--accent-primary);
     color: var(--text-primary);
   }
 
@@ -251,8 +251,8 @@
   .shortcut-badge {
     font-size: 0.75rem;
     font-weight: 600;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
     padding: 0.1rem 0.4rem;
     border-radius: 4px;
     color: var(--text-muted);
@@ -280,7 +280,8 @@
   .search-backdrop {
     position: absolute;
     inset: 0;
-    background: rgba(10, 12, 16, 0.75);
+    background: var(--glass-bg);
+    opacity: 0.95;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
   }
@@ -299,11 +300,10 @@
   }
 
   .search-box {
-    background: rgba(18, 22, 33, 0.85);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
     border-radius: 16px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 
-                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    box-shadow: 0 20px 40px var(--glass-shadow);
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -315,7 +315,7 @@
     display: flex;
     align-items: center;
     padding: 1.2rem 1.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid var(--border-color);
     gap: 1rem;
   }
 
@@ -358,7 +358,7 @@
   }
 
   .search-close:hover {
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--bg-tertiary);
     color: var(--text-primary);
   }
 
@@ -393,8 +393,8 @@
   }
 
   .search-result-item.active {
-    background: rgba(255, 255, 255, 0.03);
-    border-color: rgba(255, 255, 255, 0.08);
+    background: var(--bg-tertiary);
+    border-color: var(--border-color);
   }
 
   .result-meta {
@@ -414,13 +414,13 @@
 
   .badge-essay {
     background: rgba(139, 92, 246, 0.15);
-    color: #a78bfa;
-    border: 1px solid rgba(139, 92, 246, 0.25);
+    color: var(--accent-primary);
+    border: 1px solid var(--border-glow);
   }
 
   .badge-garden {
     background: rgba(236, 72, 153, 0.15);
-    color: #f472b6;
+    color: var(--accent-secondary);
     border: 1px solid rgba(236, 72, 153, 0.25);
   }
 
@@ -453,8 +453,8 @@
     display: flex;
     gap: 1.5rem;
     padding: 0.8rem 1.5rem;
-    background: rgba(14, 18, 28, 0.6);
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    background: var(--bg-tertiary);
+    border-top: 1px solid var(--border-color);
   }
 
   .footer-tip {
@@ -466,8 +466,8 @@
   }
 
   .footer-tip kbd {
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
     border-radius: 4px;
     padding: 0.05rem 0.3rem;
     font-family: inherit;

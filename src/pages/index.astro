@@ -41,6 +41,16 @@ const latestGarden = gardenPosts
           public log of technical book summaries. Focus on depth and principles
           over volume and trends.
         </p>
+        <div class="hero-search-wrapper">
+          <button class="hero-search-btn" onclick="document.getElementById('search-trigger')?.click()" aria-label="Search site">
+            <svg class="hero-search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <span>Search essays, books, concepts...</span>
+            <kbd class="hero-search-kbd">⌘K</kbd>
+          </button>
+        </div>
         <div class="hero-actions">
           <a href={`${import.meta.env.BASE_URL}blog`} class="btn btn-primary">Read Essays</a>
           <a href={`${import.meta.env.BASE_URL}garden`} class="btn btn-secondary">Explore Garden</a>
@@ -180,6 +190,57 @@ const latestGarden = gardenPosts
   .hero-actions {
     display: flex;
     gap: 1rem;
+  }
+
+  .hero-search-wrapper {
+    width: 100%;
+    max-width: 420px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-search-btn {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 9999px;
+    padding: 0.75rem 1.25rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.95rem;
+    text-align: left;
+    transition: all var(--transition-fast);
+  }
+
+  .hero-search-btn:hover {
+    background: var(--bg-secondary);
+    border-color: var(--accent-primary);
+    color: var(--text-primary);
+    box-shadow: 0 4px 20px var(--accent-glow);
+  }
+
+  .hero-search-icon {
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-right: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .hero-search-btn:hover .hero-search-icon {
+    color: var(--accent-primary);
+  }
+
+  .hero-search-kbd {
+    margin-left: auto;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    color: var(--text-muted);
   }
 
   .btn {
