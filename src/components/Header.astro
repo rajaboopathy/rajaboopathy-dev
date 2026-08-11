@@ -1,4 +1,5 @@
 ---
+import Search from './Search.astro';
 const navItems = [
   { href: import.meta.env.BASE_URL, label: 'Home' },
   { href: `${import.meta.env.BASE_URL}blog`, label: 'Essays' },
@@ -17,22 +18,25 @@ const currentPath = cleanPath(pathname);
       <span class="logo-suffix">Synthesis</span>
     </a>
     
-    <nav class="nav">
-      <ul class="nav-list">
-        {navItems.map(item => {
-          const itemCleanPath = cleanPath(item.href);
-          const isActive = currentPath === itemCleanPath || 
-            (item.href !== import.meta.env.BASE_URL && currentPath.startsWith(itemCleanPath));
-          return (
-            <li>
-              <a href={item.href} class={`nav-link ${isActive ? 'active' : ''}`}>
-                {item.label}
-              </a>
-            </li>
-          );
-        })}
-      </ul>
-    </nav>
+    <div class="nav-group">
+      <nav class="nav">
+        <ul class="nav-list">
+          {navItems.map(item => {
+            const itemCleanPath = cleanPath(item.href);
+            const isActive = currentPath === itemCleanPath || 
+              (item.href !== import.meta.env.BASE_URL && currentPath.startsWith(itemCleanPath));
+            return (
+              <li>
+                <a href={item.href} class={`nav-link ${isActive ? 'active' : ''}`}>
+                  {item.label}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+      <Search />
+    </div>
   </div>
 </header>
 
@@ -123,5 +127,11 @@ const currentPath = cleanPath(pathname);
     .logo {
       font-size: 1.2rem;
     }
+  }
+
+  .nav-group {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
   }
 </style>
