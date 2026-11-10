@@ -194,6 +194,7 @@ const formatDate = (date: Date) => {
     border-collapse: collapse;
     margin-bottom: 1.75rem;
     font-size: 0.95rem;
+    table-layout: auto;
   }
 
   .markdown-content :global(th),
@@ -202,6 +203,12 @@ const formatDate = (date: Date) => {
     padding: 0.65rem 0.8rem;
     text-align: left;
     vertical-align: top;
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+
+  .markdown-content :global(td code),
+  .markdown-content :global(th code) {
     overflow-wrap: anywhere;
   }
 
