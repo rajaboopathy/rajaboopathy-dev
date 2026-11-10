@@ -1,12 +1,10 @@
 ---
-title: "State of gradient boosting libraries — November 2026"
-date: 2026-11-06
-status: draft
-type: research
-tags: [gradient-boosting, xgboost, lightgbm, catboost, scikit-learn, tabular-ml]
+title: "Synthesis: State of Gradient Boosting Libraries"
+description: "November 2026 snapshot of XGBoost, LightGBM, CatBoost, and scikit-learn: what shipped, how they compare, and which library fits which tabular job."
+pubDate: 2026-11-06
+category: "Research Notes"
+tags: ["Gradient Boosting", "XGBoost", "LightGBM", "CatBoost", "Tabular ML"]
 ---
-
-# State of gradient boosting libraries — November 2026
 
 *Research brief, compiled 6 November 2026. Versions and dates are from PyPI and GitHub release pages checked that day. PyPI/GitHub timestamps are UTC, so dates are given as UTC calendar days.*
 
